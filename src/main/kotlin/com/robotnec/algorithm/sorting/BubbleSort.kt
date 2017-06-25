@@ -7,14 +7,12 @@ class BubbleSort: Sorting {
     override fun sort(input: IntArray): IntArray {
         do {
             var swapped = false
-            input.forEachIndexed { index, value ->
-                if (index == input.size - 1) {
-                    return@forEachIndexed
-                }
-                val second = input[index + 1]
-                if (value > second) {
-                    input[index] = second
-                    input[index + 1] = value
+            for (i in 0..input.size - 2) {
+                val key = input[i]
+                val next = input[i + 1]
+                if (key > next) {
+                    input[i] = next
+                    input[i + 1] = key
                     swapped = true
                 }
             }

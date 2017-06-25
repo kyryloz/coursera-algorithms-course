@@ -2,25 +2,37 @@ package com.robotnec.algorithm.sorting
 
 import io.kotlintest.matchers.shouldBe
 import io.kotlintest.specs.StringSpec
+import java.util.*
 
 /**
  * Created by kyryloz
  */
 class SortingTest : StringSpec() {
 
-    val input = intArrayOf(2, 0, 10, 12, 100, 42, 57, 40, 6, 7, 11, 1, 5, 67)
+    companion object {
+        const val N_SIZE = 100
+    }
+
+    val input: IntArray
+    val output: IntArray
 
     init {
-        val output = input.clone()
+        input = (0..N_SIZE).toList()
+                .apply { Collections.shuffle(this) }
+                .toIntArray()
+        output = input.clone()
         output.sort()
 
-        "should sort" {
-            val sortAlgorithms = arrayOf(
-                    BubbleSort()
-            )
-            sortAlgorithms.forEach {
-                it.sort(input) shouldBe output
-            }
+        "Bubble sort" {
+            test(BubbleSort(), output)
         }
+
+        "Insertion sort" {
+            test(InsertionSort(), output)
+        }
+    }
+
+    private fun test(sortAlgorithm: Sorting, output: IntArray) {
+        sortAlgorithm.sort(input.clone()) shouldBe output
     }
 }
