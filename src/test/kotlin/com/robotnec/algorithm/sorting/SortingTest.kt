@@ -30,6 +30,10 @@ class SortingTest : StringSpec() {
         "Insertion sort" {
             test(InsertionSort(), output)
         }
+
+        "Selection sort" {
+            test(SelectionSort(), output)
+        }
     }
 
     private fun test(sortAlgorithm: Sorting, output: IntArray) {
