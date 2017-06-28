@@ -8,9 +8,9 @@ class SelectionSort: Sorting {
         if (input.isEmpty()) {
             return input
         }
-        var biggest = input[0]
-        var biggestIndex = 0
         for (i in 0..input.size - 1) {
+            var biggest = input[0]
+            var biggestIndex = 0
             for (j in 1..input.size - 1 - i) {
                 if (input[j] > biggest) {
                     biggest = input[j]
@@ -20,8 +20,6 @@ class SelectionSort: Sorting {
             val temp = input[input.size - 1 - i]
             input[input.size - 1 - i] = biggest
             input[biggestIndex] = temp
-            biggest = input[0]
-            biggestIndex = 0
         }
         return input
     }
