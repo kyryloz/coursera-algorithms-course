@@ -5,9 +5,6 @@ package com.robotnec.algorithm.sorting
  */
 class SelectionSort: Sorting {
     override fun sort(input: IntArray): IntArray {
-        if (input.isEmpty()) {
-            return input
-        }
         for (i in 0..input.size - 1) {
             var biggestIndex = 0
             for (j in 1..input.size - 1 - i) {
